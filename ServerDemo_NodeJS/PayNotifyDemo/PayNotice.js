@@ -1,4 +1,4 @@
-var http = require('http');
+﻿var http = require('http');
 var qs = require('querystring');
 var crypto = require('crypto');
 var privateKey="696064B29E9A0B7DDBD6FCB88F34A555";
