@@ -4,7 +4,7 @@ var crypto = require('crypto');
 var privateKey="696064B29E9A0B7DDBD6FCB88F34A555";
 
 /**
- * anysdk Ö§¸¶Í¨Öª°×Ãûµ¥ÅĞ¶Ï
+ * anysdk æ”¯ä»˜é€šçŸ¥ç™½åå•åˆ¤æ–­
  */
 var checkAnySDKServer=function (paramIP){
      var ips=["211.151.20.126", "211.151.20.127"];
@@ -17,10 +17,10 @@ var checkAnySDKServer=function (paramIP){
  
  
 /**
- * ÑéÇ©
+ * éªŒç­¾
  * @param array params 
- * @param array priKey AnySDK·ÖÅäµÄÓÎÏ·privateKey
- * @return bool
+ * @param array priKey AnySDKåˆ†é…çš„æ¸¸æˆprivateKey
+ * @return bool 
  */
 var checkSign=function(params, priKey){
     if(params==null || params["sign"]==null || priKey==null){
@@ -40,39 +40,39 @@ var checkSign=function(params, priKey){
 
  
  /**
- * ¼ÆËãÇ©Ãû
+ * è®¡ç®—ç­¾å
  * @param array $data
  * @param string $privateKey
  * @return string
  */
 var getSign=function(data, priKey){
-	console.log("#\n#Ô­Ê¼Êı×é:\n"+JSON.stringify(data)+"\n");
+	console.log("#\n#åŸå§‹æ•°ç»„:\n"+JSON.stringify(data)+"\n");
 	delete data["sign"];
 	
-	console.log("#\n#È¡³ösignºóµÄÊı×é:\n"+JSON.stringify(data)+"\n");
-	//²»ÓÃÅÅĞò£¬ÒòÎª´«¹ıÀ´µÄÊı¾İ±¾Éí¾ÍÊÇÅÅ¹ıĞòµÄ
-	console.log("#\n#²ÎÊıÊı×é°´keyÉıĞò:\n"+JSON.stringify(data)+"\n");
+	console.log("#\n#å–å‡ºsignåçš„æ•°ç»„:\n"+JSON.stringify(data)+"\n");
+	//ä¸ç”¨æ’åºï¼Œå› ä¸ºä¼ è¿‡æ¥çš„æ•°æ®æœ¬èº«å°±æ˜¯æ’è¿‡åºçš„
+	console.log("#\n#å‚æ•°æ•°ç»„æŒ‰keyå‡åº:\n"+JSON.stringify(data)+"\n");
 	
 	var str="";
 	for(var key in data){
 		str+=data[key];
 	}
-	console.log("#\n#½«Êı×éÖµÁ¬½Ó³É×Ö·û´®:\n"+str+"\n");
+	console.log("#\n#å°†æ•°ç»„å€¼è¿æ¥æˆå­—ç¬¦ä¸²:\n"+str+"\n");
 	
 	var md5 = crypto.createHash('md5'); 
 	md5.update(str, 'utf8'); 
 	var d1 = md5.digest('hex');
-	console.log("#\n#µÚÒ»´Îmd5²¢Ğ¡Ğ´:\n"+d1+"\n");
+	console.log("#\n#ç¬¬ä¸€æ¬¡md5å¹¶å°å†™:\n"+d1+"\n");
 	
 	md5 = crypto.createHash('md5'); 
 	md5.update(d1+privateKey, 'utf8');
 	var d2=md5.digest('hex');
-	console.log("#\n#×îºóÒ»´Îmd5²¢Ğ¡Ğ´(Ç©Ãû):\n"+d2+"\n");
+	console.log("#\n#æœ€åä¸€æ¬¡md5å¹¶å°å†™(ç­¾å):\n"+d2+"\n");
     return d2;
 }
 
 /**
- * ¼ì²âµÀ¾ß½ğ¶îÓëÊµ¼Ê½ğ¶îÊÇ·ñÒ»ÖÂ£¬¿ª·¢Õß¸ù¾İÊµ¼ÊÇé¿ö×Ô¼ºÊµÏÖÅĞ¶Ï·½Ê½
+ * æ£€æµ‹é“å…·é‡‘é¢ä¸å®é™…é‡‘é¢æ˜¯å¦ä¸€è‡´ï¼Œå¼€å‘è€…æ ¹æ®å®é™…æƒ…å†µè‡ªå·±å®ç°åˆ¤æ–­æ–¹å¼
  * @param type $params
  */
 var checkAmount=function(params){
@@ -83,9 +83,9 @@ var checkAmount=function(params){
 }
 
 /**
- * »ñÈ¡µÀ¾ßÔÚ·şÎñÆ÷ÉÏµÄ½ğ¶î
+ * è·å–é“å…·åœ¨æœåŠ¡å™¨ä¸Šçš„é‡‘é¢
  * @param type productId 
- * @return int µ¥Î»Ôª
+ * @return int å•ä½å…ƒ
  */
 var getProductAmount=function(productId) {
         //get amount by productId
@@ -93,7 +93,7 @@ var getProductAmount=function(productId) {
 }
 
 /**
- * »ñÈ¡¿Í»§¶Ëip
+ * è·å–å®¢æˆ·ç«¯ip
  * @return string 
  */
 var getClientIp=function (req) {
